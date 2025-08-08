@@ -1,6 +1,8 @@
 package com.xworkz.wild.config;
 
-public class WildInitializer extends AbstractAnnotationConfigDispatcherServletInitializer  {
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+public class WildInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 
     @Override
