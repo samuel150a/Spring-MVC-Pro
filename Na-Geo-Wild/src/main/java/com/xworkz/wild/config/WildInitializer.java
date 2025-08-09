@@ -12,7 +12,7 @@ public class WildInitializer extends AbstractAnnotationConfigDispatcherServletIn
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[0];//,
+        return new Class[]{WildConfig.class};
     }
 
     @Override
