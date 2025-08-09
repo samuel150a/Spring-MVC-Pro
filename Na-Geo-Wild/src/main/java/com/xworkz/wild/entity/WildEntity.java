@@ -12,7 +12,7 @@ public class WildEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int ID;
+    private Integer ID;
 
     @Column(name="DocumentaryName")
     private String DocumentaryName;
