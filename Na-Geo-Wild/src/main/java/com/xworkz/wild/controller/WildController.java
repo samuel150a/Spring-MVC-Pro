@@ -28,7 +28,7 @@ public class WildController {
         System.out.println("Running in the fillDetails method ");
         System.out.println(wildDto);
 
-        model.addAttribute("message", "Done");
+
         boolean check = wildService.saveDetails(wildDto);
         if (check) {
             model.addAttribute("message", "Done");
