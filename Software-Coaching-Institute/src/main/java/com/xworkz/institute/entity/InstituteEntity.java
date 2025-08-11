@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name="institute_details")
+@NamedQuery(name="fetchAllEntities",query="SELECT i FROM InstituteEntity i ")
 public class InstituteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
