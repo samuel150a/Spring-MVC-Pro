@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class WildDto {
+    private Integer id;
     private String documentaryName;
     private int episode;
     private String photographer;
