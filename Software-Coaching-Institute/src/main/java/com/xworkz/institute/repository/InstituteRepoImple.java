@@ -6,16 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
+
 @Repository
 public class InstituteRepoImple  implements InstituteRepository{
 
-    @Override
-    public boolean saveDetails(InstituteEntity instituteEntity ) {
-        EntityManagerFactory entityManagerFactory=null;
     EntityManager entityManager=null;
     EntityTransaction entityTransaction=null;
+    EntityManagerFactory  entityManagerFactory = Persistence.createEntityManagerFactory("x-workz");
+    @Override
+    public boolean saveDetails(InstituteEntity instituteEntity ) {
+
+         EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("x-workz");
+
         try{
-        entityManagerFactory= Persistence.createEntityManagerFactory("x-workz");
         entityManager=entityManagerFactory.createEntityManager();
         entityTransaction=entityManager.getTransaction();
 
@@ -29,7 +34,7 @@ public class InstituteRepoImple  implements InstituteRepository{
         System.out.println(e.getMessage());
     }
         finally{
-        if(entityManagerFactory!=null)
+        if(entityManagerFactory!=null||entityManagerFactory.isOpen())
         {
             entityManagerFactory.close();
         }
@@ -40,5 +45,28 @@ public class InstituteRepoImple  implements InstituteRepository{
     }
         return true;
 }
+
+    @Override
+    public List<InstituteEntity> fethAllData() {
+        List<InstituteEntity> fetch = null;
+        try{
+
+        fetch = entityManagerFactory.createEntityManager().createNamedQuery("fetchAllEntities").getResultList();
+    }
+ catch(PersistenceException e){
+            System.out.println(e.getMessage());
+        }
+        finally{
+            if(entityManagerFactory!=null||entityManagerFactory.isOpen())
+            {
+                entityManagerFactory.close();
+            }
+            if (entityManager!=null)
+            {
+                entityManager.close();
+            }
+        }
+        return fetch;
+    }
 }
 
