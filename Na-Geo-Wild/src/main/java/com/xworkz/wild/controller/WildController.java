@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLOutput;
+import java.util.List;
+
 @Controller
 public class WildController {
     @Autowired
@@ -34,12 +37,24 @@ public class WildController {
             model.addAttribute("message", "Done");
 
             return "WildSuccesfull";
-        }
-else {
+        } else {
             model.addAttribute("error", "Failed");
 
             System.out.println("Not Saved for DataBase");
             return "Wild";
         }
     }
+
+@GetMapping("/getAllData")
+        public String getAllData(Model model)
+        {
+            System.out.println("Running in the getAllData");
+             List<WildDto> ref=wildService.fetchListOfEntities();
+             model.addAttribute("listOfDto",ref);
+            System.out.println("Final returned value");
+            ref.forEach(System.out::println);
+
+             return "WildEntities";
+        }
+
 }
