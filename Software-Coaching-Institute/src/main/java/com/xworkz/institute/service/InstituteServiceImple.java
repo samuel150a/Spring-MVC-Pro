@@ -5,6 +5,11 @@ import com.xworkz.institute.entity.InstituteEntity;
 import com.xworkz.institute.repository.InstituteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 
 public class InstituteServiceImple implements InstituteService {
@@ -24,4 +29,25 @@ public class InstituteServiceImple implements InstituteService {
 
 
     }
+
+    @Override
+    public List<InstituteDto> fethAllData() {
+        System.out.println("Running in the fethAllData method");
+
+
+        List<InstituteEntity> data =instituteRepository.fethAllData();
+        List<InstituteDto>  instituteDtos=data.stream().map(e->{
+            InstituteDto instituteDto=new InstituteDto();
+
+            instituteDto.setCandidateName(e.getCandidateName());
+            instituteDto.setDegree(e.getDegree());
+            instituteDto.setCourse(e.getCourse());
+            instituteDto.setDuration(e.getDuration());
+            instituteDto.setYearOfPassout(e.getYearOfPassout());
+            instituteDto.setId(e.getID());
+            return instituteDto;
+        }).collect(Collectors.toList());
+return  instituteDtos;
+    }
+
 }
