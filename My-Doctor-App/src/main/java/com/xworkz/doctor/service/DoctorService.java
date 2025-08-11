@@ -1,4 +1,8 @@
 package com.xworkz.doctor.service;
 
-public class DoctorService {
+import com.xworkz.doctor.dto.DoctorDto;
+
+public interface DoctorService {
+    boolean save(DoctorDto doctorDto);
+
 }
