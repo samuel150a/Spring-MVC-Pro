@@ -50,4 +50,18 @@ public class InstituteServiceImple implements InstituteService {
 return  instituteDtos;
     }
 
+    @Override
+    public InstituteDto fetchById(Integer id) {
+        InstituteEntity instituteEntity=instituteRepository.fetchById(id);
+        InstituteDto instituteDto=new InstituteDto();
+        instituteDto.setId(instituteEntity.getID());
+        instituteDto.setCandidateName(instituteEntity.getCandidateName());
+        instituteDto.setCourse(instituteEntity.getCourse());
+        instituteDto.setDuration(instituteEntity.getDuration());
+        instituteDto.setDegree(instituteEntity.getDegree());
+        instituteDto.setYearOfPassout(instituteEntity.getYearOfPassout());
+ return instituteDto;
+
+    }
+
 }
