@@ -9,17 +9,18 @@ import javax.persistence.*;
 import java.util.List;
 
 @Repository
-public class WildRepositoryImple  implements  WildRepository {
+public class WildRepositoryImple implements WildRepository {
 
-    EntityManager entityManager = null;
-    EntityTransaction entityTransaction = null;
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("x-workz");
+
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("x-workz");
 
     @Override
     public boolean saveDetails(WildEntity wildEntity) {
-
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
 
         try {
+
             entityManager = emf.createEntityManager();
             entityTransaction = entityManager.getTransaction();
 
@@ -30,9 +31,7 @@ public class WildRepositoryImple  implements  WildRepository {
         } catch (PersistenceException e) {
             System.out.println(e.getMessage());
         } finally {
-            if (emf != null) {
-                emf.close();
-            }
+
             if (entityManager != null) {
                 entityManager.close();
             }
@@ -42,20 +41,46 @@ public class WildRepositoryImple  implements  WildRepository {
 
     @Override
     public List<WildEntity> fetchListOfEntities() {
+        System.out.println("Running in the fetchListOfEntities ");
         List<WildEntity> fetch = null;
         try {
             fetch = emf.createEntityManager().createNamedQuery("fetchAllWildEntity").getResultList();
-            //System.out.println(fetch);
+            System.out.println(fetch);
         } catch (PersistenceException e) {
             System.out.println(e.getMessage());
-        } finally {
-            if (emf != null) {
-                emf.close();
-            }
-            if (entityManager != null) {
-                entityManager.close();
-            }
         }
+
+
         return fetch;
+
     }
+
+    @Override
+    public WildEntity fetchById(Integer id) {
+        System.out.println("Running in the fetchById ");
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+
+        WildEntity fetch = null;
+        try {
+            entityManager = emf.createEntityManager();
+
+            fetch=entityManager.find(WildEntity.class,id);
+            System.out.println(fetch);
+        } catch (PersistenceException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        return fetch;
+
+    }
+
+    public static void closeFactory() {
+        if (emf != null && emf.isOpen()) {
+            emf.close();
+            System.out.println("EntityManagerFactory closed.");
+        }
+    }
+
 }
