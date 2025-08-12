@@ -39,9 +39,13 @@ public class InstituteController {
          {
              model.addAttribute("mess","Save done");
              System.out.println("Saved Successfully");
+             List<InstituteDto> fetchedDataDto=instituteService.fethAllData();
+             System.out.println("here is the feteched value");
+             fetchedDataDto.forEach(System.out::println);
+             model.addAttribute("ref",fetchedDataDto);
+             return "InstituteData";
 
 
-             return "InstituteSuccess";
          }
          else {
              model.addAttribute("error"," Not saved");
@@ -52,13 +56,19 @@ public class InstituteController {
 
 
     }
-    @GetMapping("Fetch")
+    @GetMapping("/insti")
     public String FetchAll(Model model)
     {
         List<InstituteDto> fetchedDataDto=instituteService.fethAllData();
         System.out.println("here is the feteched value");
         fetchedDataDto.forEach(System.out::println);
         model.addAttribute("ref",fetchedDataDto);
-          return "InstituteData";
+          return "InstituteSuccess";
+    }
+    @GetMapping("/back")
+    public String indexPage()
+    {
+        System.out.println("Running in the indexPage Method");
+        return "index";
     }
 }
