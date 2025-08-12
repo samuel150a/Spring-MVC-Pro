@@ -8,5 +8,6 @@ import java.util.List;
 public interface WildService {
     boolean saveDetails(WildDto wildDto);
     List<WildDto> fetchListOfEntities();
+    WildDto fetchById(Integer id);
 
 }
