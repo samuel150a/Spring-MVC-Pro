@@ -57,4 +57,20 @@ public class WildServiceImple implements WildService {
 
 
     }
+
+    @Override
+    public WildDto fetchById(Integer id) {
+        WildEntity wildEntity1= wildRepository.fetchById(id);
+        WildDto wildDto =new WildDto();
+
+        wildDto.setId(wildEntity1.getID());
+
+        wildDto.setDocumentaryName(wildEntity1.getDocumentaryName());
+        wildDto.setEpisode(wildEntity1.getEpisode());
+        wildDto.setPhotographer(wildEntity1.getPhotographer());
+        wildDto.setFilmingLocation(wildEntity1.getFilmingLocation());
+        wildDto.setCategory(wildEntity1.getCategory());
+        return wildDto;
+
+    }
 }
