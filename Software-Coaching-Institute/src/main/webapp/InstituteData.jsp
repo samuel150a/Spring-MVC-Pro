@@ -5,17 +5,18 @@
 
 <body>
 <h2>Datas!</h2>
+<a href="back">back</a>
 
 
 <table class="table">
     <thead class="thead-dark">
     <tr>
         <th scope="col">Id</th>
-        <th scope="col">Documentary Name</th>
-        <th scope="col">Episode</th>
-        <th scope="col">Photographer</th>
-        <th scope="col">Filming Location</th>
-        <th scope="col">Category</th>
+        <th scope="col">candidateName </th>
+        <th scope="col">degree</th>
+        <th scope="col">yearOfPassout</th>
+        <th scope="col">course </th>
+        <th scope="col">duration</th>
     </tr>
     </thead>
     <tbody>
