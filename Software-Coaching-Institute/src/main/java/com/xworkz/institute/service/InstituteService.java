@@ -12,5 +12,6 @@ public interface InstituteService {
 
     boolean saveDetails(InstituteDto institueDto);
     List<InstituteDto> fethAllData();
+    InstituteDto fetchById(Integer id);
 
 }
