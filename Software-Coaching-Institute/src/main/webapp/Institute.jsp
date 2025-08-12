@@ -3,7 +3,7 @@
 <html>
 <body>
 <h2>welcome !</h2>
-
+<a href="back">back</a>
 <form action="insti" method="post">
 CandidateName:<input type="text" name="candidateName"> <br><br>
 Degree:<input type="text" name="degree"> <br><br>
