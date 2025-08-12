@@ -5,14 +5,14 @@ import com.xworkz.institute.service.InstituteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.*;
 import java.sql.SQLOutput;
 import java.util.List;
 
 @Controller
+@RequestMapping("/")
 public class InstituteController {
     @Autowired
     InstituteService instituteService;
@@ -21,14 +21,14 @@ public class InstituteController {
         System.out.println("Running in the InstituteController constructor");
     }
 
-    @GetMapping("/Check")
+    @GetMapping("Check")
     public String getInstitutePage()
     {
         System.out.println("Running in the getInstitutePage Method");
         return "Institute";
     }
 
-    @PostMapping("/insti")
+    @PostMapping("insti")
     public String  details(InstituteDto instituteDto, Model model)
     {
         System.out.println("Running in the details ");
@@ -44,8 +44,6 @@ public class InstituteController {
              fetchedDataDto.forEach(System.out::println);
              model.addAttribute("ref",fetchedDataDto);
              return "InstituteData";
-
-
          }
          else {
              model.addAttribute("error"," Not saved");
@@ -56,19 +54,33 @@ public class InstituteController {
 
 
     }
-    @GetMapping("/insti")
+    @GetMapping({"insti","wback"})
     public String FetchAll(Model model)
     {
         List<InstituteDto> fetchedDataDto=instituteService.fethAllData();
         System.out.println("here is the feteched value");
         fetchedDataDto.forEach(System.out::println);
         model.addAttribute("ref",fetchedDataDto);
-          return "InstituteSuccess";
+          return "InstituteData";
     }
-    @GetMapping("/back")
+    @GetMapping("back")
     public String indexPage()
     {
         System.out.println("Running in the indexPage Method");
         return "index";
     }
+    @GetMapping("view/{id}")
+        public String getById(@PathVariable Integer id, Model model)
+        {
+            InstituteDto byId=instituteService.fetchById(id);
+            System.out.println("FetchedId======================="+byId);
+            model.addAttribute("myid",byId);
+            return "IdData";
+        }
+//    @GetMapping("wback")
+//    public String dataPage()
+//    {
+//        System.out.println("Running in the indexPage Method");
+//        return "InstituteData";
+//    }
 }
