@@ -9,6 +9,8 @@
 
 </head>
 <body>
+<a href="back">back</a>
+
 <h1>Enities in table format</h1>
 
 
@@ -21,6 +23,7 @@
         <th scope="col">Photographer</th>
         <th scope="col">Filming Location</th>
         <th scope="col">Category</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +36,7 @@
         <td>${ref.photographer}</td>
         <td>${ref.filmingLocation}</td>
         <td>${ref.category}</td>
+        <td> <a href="view/${ref.getId()}">view</a></td>
 
 
     </tr>
@@ -43,7 +47,6 @@
 </table>
 
 
-    </tbody>
-</table>
+
 </body>
 </html>
