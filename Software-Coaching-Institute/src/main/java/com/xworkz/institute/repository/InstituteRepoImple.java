@@ -11,17 +11,16 @@ import java.util.List;
 
 @Repository
 public class InstituteRepoImple  implements InstituteRepository{
+            private static EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("x-workz");
 
-    EntityManager entityManager=null;
-    EntityTransaction entityTransaction=null;
     @Override
     public boolean saveDetails(InstituteEntity instituteEntity ) {
-        EntityManagerFactory entityManagerFactory=null;
 
 
+        EntityManager entityManager=null;
+        EntityTransaction entityTransaction=null;
 
         try{
-            entityManagerFactory = Persistence.createEntityManagerFactory("x-workz");
 
             entityManager=entityManagerFactory.createEntityManager();
         entityTransaction=entityManager.getTransaction();
@@ -36,10 +35,7 @@ public class InstituteRepoImple  implements InstituteRepository{
         System.out.println(e.getMessage());
     }
         finally{
-        if(entityManagerFactory!=null||entityManagerFactory.isOpen())
-        {
-            entityManagerFactory.close();
-        }
+
         if (entityManager!=null)
         {
             entityManager.close();
@@ -52,25 +48,54 @@ public class InstituteRepoImple  implements InstituteRepository{
     public List<InstituteEntity> fethAllData() {
         List<InstituteEntity> fetch = null;
         EntityManagerFactory  entityManagerFactory = Persistence.createEntityManagerFactory("x-workz");
-
+        EntityManager entityManager=null;
         try{
 
-        fetch = entityManagerFactory.createEntityManager().createNamedQuery("fetchAllEntities").getResultList();
+        entityManager = entityManagerFactory.createEntityManager();
+           fetch= entityManager .createNamedQuery("fetchAllEntities").getResultList();
     }
  catch(PersistenceException e){
             System.out.println(e.getMessage());
         }
         finally{
-            if(entityManagerFactory!=null||entityManagerFactory.isOpen())
-            {
-                entityManagerFactory.close();
-            }
+
             if (entityManager!=null)
             {
                 entityManager.close();
             }
         }
         return fetch;
+    }
+
+    @Override
+    public InstituteEntity fetchById(Integer id) {
+        System.out.println("Running in the fetchById method");
+          EntityManager entityManager=null;
+        InstituteEntity  finded=null;
+        try{
+            entityManager=entityManagerFactory.createEntityManager();
+              finded =entityManager.find(InstituteEntity.class,id);
+            System.out.println("finded"+finded);
+        }
+        catch(PersistenceException e){
+            System.out.println(e.getMessage());
+        }finally{
+
+            if (entityManager!=null)
+            {
+                entityManager.close();
+            }
+        }
+
+        return finded;
+
+    }
+    public static void closeFactory()
+    {
+        if(entityManagerFactory!=null&& entityManagerFactory.isOpen())
+        {
+            entityManagerFactory.close();
+        }
     }
 }
 
