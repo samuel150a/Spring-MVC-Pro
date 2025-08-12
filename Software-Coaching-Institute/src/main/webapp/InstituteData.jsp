@@ -17,6 +17,7 @@
         <th scope="col">yearOfPassout</th>
         <th scope="col">course </th>
         <th scope="col">duration</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -29,6 +30,8 @@
             <td>${ck.yearOfPassout}</td>
             <td>${ck.course}</td>
             <td>${ck.duration}</td>
+            <td><a href="view/${ck.id}">view</a></td>
+
 
 
         </tr>
