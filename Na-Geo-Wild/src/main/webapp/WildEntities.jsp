@@ -36,7 +36,7 @@
         <td>${ref.photographer}</td>
         <td>${ref.filmingLocation}</td>
         <td>${ref.category}</td>
-        <td> <a href="view/${ref.getId()}">view</a></td>
+        <td> <a href="view/${ref.id}">view</a></td>
 
 
     </tr>
