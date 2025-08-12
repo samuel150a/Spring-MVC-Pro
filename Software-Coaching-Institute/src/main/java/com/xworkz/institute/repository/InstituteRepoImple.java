@@ -14,14 +14,16 @@ public class InstituteRepoImple  implements InstituteRepository{
 
     EntityManager entityManager=null;
     EntityTransaction entityTransaction=null;
-    EntityManagerFactory  entityManagerFactory = Persistence.createEntityManagerFactory("x-workz");
     @Override
     public boolean saveDetails(InstituteEntity instituteEntity ) {
+        EntityManagerFactory entityManagerFactory=null;
 
-         EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("x-workz");
+
 
         try{
-        entityManager=entityManagerFactory.createEntityManager();
+            entityManagerFactory = Persistence.createEntityManagerFactory("x-workz");
+
+            entityManager=entityManagerFactory.createEntityManager();
         entityTransaction=entityManager.getTransaction();
 
         entityTransaction.begin();
@@ -49,6 +51,8 @@ public class InstituteRepoImple  implements InstituteRepository{
     @Override
     public List<InstituteEntity> fethAllData() {
         List<InstituteEntity> fetch = null;
+        EntityManagerFactory  entityManagerFactory = Persistence.createEntityManagerFactory("x-workz");
+
         try{
 
         fetch = entityManagerFactory.createEntityManager().createNamedQuery("fetchAllEntities").getResultList();
