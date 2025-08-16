@@ -1,5 +1,6 @@
 package com.xworkz.doctor.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -11,7 +12,7 @@ public class DoctorConfig  {
     {
         System.out.println("Running in DoctorConfig constructor");
     }
-
+@Bean
     public InternalResourceViewResolver resolver()
     {
         System.out.println("Running in the resolver ");
