@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface WildRepository {
     boolean saveDetails(WildEntity wildEntity);
-    List<WildEntity> fetchListOfEntities( );
+    List<WildEntity> fetchListOfEntities();
     WildEntity fetchById(Integer id);
 
 }
