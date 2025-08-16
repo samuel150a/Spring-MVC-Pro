@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NamedQuery(name = "fetchAllWildEntity", query = "SELECT i FROM WildEntity i")
-@NamedQuery(name="fetchById" ,query="Select a from WildEntity a where a.ID=:ID")
+//@NamedQuery(name="fetchById" ,query="Select a from WildEntity a where a.ID=:ID")
 
 
 @Table(name="wild_sparks")
