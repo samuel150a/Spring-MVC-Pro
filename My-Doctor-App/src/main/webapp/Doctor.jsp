@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <body>
+<a href="back">back</a>
 <h2>welcome !</h2>
 
 <form action="docs" method="post">
