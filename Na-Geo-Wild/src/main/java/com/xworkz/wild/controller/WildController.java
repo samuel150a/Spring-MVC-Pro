@@ -83,6 +83,7 @@ public class WildController {
 
         return "DisplayId";
     }
+
 //    @GetMapping("/wback")
 //    public String wildEntitesTablePage() {
 //        System.out.println("Running in the wildEntitesTablePage Method");
