@@ -65,6 +65,7 @@
     xhttp.open("GET","http://localhost:8080/passport-seva/checkemail?email="+email);
     xhttp.send();
         console.log(xhttp);
+
     xhttp.onload=function()
     {
     document.getElementById("emailerror").innerHTML=this.responseText;
