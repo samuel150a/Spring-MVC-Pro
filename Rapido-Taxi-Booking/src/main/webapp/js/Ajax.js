@@ -1,32 +1,51 @@
-function loginEmail()
+ function loginemail()
 {
+console.log("hai")
 const email=document.getElementById('email').value
 console.log(email)
 if(email!=="")
 {
 var xhttp=new XMLHttpRequest();
-xhttp.open("Get","http://localhost:8086/Rapido-Taxi-Booking/checkEmail?email"=+email)
+xhttp.open("Get","http://localhost:8086/Rapido-Taxi-Booking/checkEmail?email="+email)
 xhttp.send();
-xhttp.onload=function();
-document.getElementById("errormail").innerHTML=this.responseText;
+xhttp.onload=function(){
+
+document.getElementById("emailerror").innerHTML=this.responseText;
             toggleSubmit();
-
+};
 }
 
-}
 else {
         document.getElementById("errormail").innerHTML = "";
-}}
-function toggleSubmit() {
-    const errormail = document.getElementById("errormail").innerText.trim();
-    //const errormobile = document.getElementById("errormobile").innerText.trim();
-
-    const submit = document.querySelector("#form button[type='submit']");
-//|| errormobile !== ""
-    if (errormail !== "" ) {
-        submit.disabled = true;
-    } else {
-        submit.disabled = false;
-    }
 }
+}
+
+
+function loginPhNo()
+{
+const PhNo=document.getElementById('PhNo').value
+if(PhNo!=="")
+{
+var xhttp=new XMLHttpRequest();
+<!--checkPhNo(Mapping Attribute)?phoneNumber(name=)="+PhNo(var)-->
+
+xhttp.open("Get","http://localhost:8086/Rapido-Taxi-Booking/checkPhNo?phoneNumber="+PhNo)
+xhttp.send();
+xhttp.onload=function(){
+document.getElementById("PhNoerror").innerHTML=this.responseText;
+toggleSubmit();
+};
+}
+
+else{
+document.getElementById("PhNoerror").innerHTML="";
+}
+}
+
+function loginName()
+{
+const Name=
+const Name=
+}
+
 
