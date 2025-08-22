@@ -12,10 +12,10 @@ public class RapidoDto {
         System.out.println("Running in the RapidoDto");
     }
 
-    private int ID;
+    private Integer ID;
     private String name;
     private String email;
-    private String phoneNumber;
+    private Long phoneNumber;
     private String dob;
     private  String gender;
     private String state;
