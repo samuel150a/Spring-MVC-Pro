@@ -16,29 +16,30 @@ public class RapidoRepositoryImplementation implements RapidoRepository {
     {
         System.out.println("Running in the RapidoRepositoryImplementation constructor");
     }
-    private static final Logger log = LoggerFactory.getLogger(RapidoRepositoryImplementation.class);
+    //private static final Logger log = LoggerFactory.getLogger(RapidoRepositoryImplementation.class);
     private EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("x-workz");
     @Override
     public Boolean save(RapidoEntity rapidoEntity) {
 
 
 
-        log.error("Running in the save method%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ");
+//        log.error("Running in the save method%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ");
+//
+//        log.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
-        log.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-
-        System.err.println("Running in the save method");
+        System.out.println("Running in the save method");
         EntityManager entityManager=null;
         EntityTransaction entityTransaction=null;
         try{
             entityManager =entityManagerFactory.createEntityManager();
             entityTransaction=entityManager.getTransaction();
             entityTransaction.begin();
+            System.out.println("7777777777777777777777 "+rapidoEntity);
             entityManager.persist(rapidoEntity);
-            log.info(String.valueOf("***********************************************"+rapidoEntity));
-
             entityTransaction.commit();
-            return true;
+            //log.info(String.valueOf("***********************************************"+rapidoEntity));
+
+
 
         }
         catch(PersistenceException e){
