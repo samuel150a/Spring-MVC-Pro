@@ -19,28 +19,27 @@ public class RapidoRestController {
 
     @GetMapping("checkEmail")
     public String mailValidation(@RequestParam("email") String email) {
-        System.out.println("Running in the mailValidation");
+        System.out.println("Running in the mailValidation in restController");
         String exsisting = rapidoService.getByEmail(email);
         if (exsisting == null) {
-            return "Email is not exsisting";
+            return "Email is not existing";
         } else {
-            return "Email is exsisting";
+            return "Email is existing";
         }
     }
 
         @GetMapping("checkPhNo")
-                public String phNoValidation(@RequestParam("cdc") Long phNo)
+                public String phNoValidation(@RequestParam("phoneNumber") Long phNo)
         {
-            System.out.println("Running in phNoValidation");
+            System.out.println("Running in phNoValidation in restController");
             Long exsisting= rapidoService.getByPhoneNumber(phNo);
             if(exsisting==null)
             {
-
-
-                
+                return "Phone No is not Existing";
             }
-
-        }
+            else {
+                return"Phone Number Existing";
+            }
     }
 
 }
