@@ -9,6 +9,7 @@
 <a href="regi">Register</a>
 
 <body>
+<h6>${message}</h6>
 <h6>${rapidoDto}</h6>
 </body>
 </html>
