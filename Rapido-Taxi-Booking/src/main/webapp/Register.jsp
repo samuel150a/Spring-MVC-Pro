@@ -14,9 +14,10 @@
     <span id="emailerror"></span>
     Email:<input type="text" name="email" id="email" onchange="loginemail()"> <br><br>
 
+    <span id="PhNoerror"></span>
 
-    PhoneNumber:<input type="number" name="phoneNumber" onblur="calling()"> <br><br>
-    Dob:<input type="date" name="dob"> <br><br>
+    PhoneNumber:<input type="number" name="phoneNumber" id="PhNo" onchange="loginPhNo()"> <br><br>
+    Dob:<input type="text" name="dob"> <br><br>
     Gender:<input type="text" name="gender"> <br><br>
     State:<input type="text" name="state"> <br><br>
     Address:<input type="text" name="address"> <br><br>
@@ -24,54 +25,11 @@
     ConfirmPassword:<input type="text" name="confirmPassword"> <br><br>
     <input type="submit" value="Submit"> <br><br>
 </form>
-<script>
 
 
 
-    function calling()
-    {
-    console.log("helo")
-    }
+<script src="js/Ajax.js" defer></script>
 
-    function loginemail()
-{
-console.log("hai")
-const email=document.getElementById('email').value
-console.log(email)
-if(email!=="")
-{
-var xhttp=new XMLHttpRequest();
-xhttp.open("Get","http://localhost:8086/Rapido-Taxi-Booking/checkEmail?email="+email)
-xhttp.send();
-xhttp.onload=function(){
-
-document.getElementById("emailerror").innerHTML=this.responseText;
-            toggleSubmit();
-};
-}
-
-else {
-        document.getElementById("errormail").innerHTML = "";
-}
-}
-
-<!--function toggleSubmit() {-->
-<!--    const errormail = document.getElementById("errormail").innerText.trim();-->
-<!--    //const errormobile = document.getElementById("errormobile").innerText.trim();-->
-
-<!--    const submit = document.querySelector("#form button[type='submit']");-->
-<!--//|| errormobile !== ""-->
-<!--    if (errormail !== "" ) {-->
-<!--        submit.disabled = true;-->
-<!--    } else {-->
-<!--        submit.disabled = false;-->
-<!--    }-->
-<!--}-->
-
-
-
-</script>
-<!--<script src="js/Ajax.js" defer></script>-->
 
 </body>
 </html>
