@@ -39,7 +39,7 @@ public class RapidoController {
         if(rapidoDto1)
         {
             System.out.println("SavedSuccessfully");
-            model.addAttribute("message","SavedSuccessfully");
+            model.addAttribute("message","***************SavedSuccessfully***************");
             return "RegisterSuccess";
         }
         else {
