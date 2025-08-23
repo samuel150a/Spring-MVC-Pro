@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="rapidoDetails3")
@@ -45,4 +46,15 @@ public class RapidoEntity {
 
     @Column(name="confirmPassword")
     private String confirmPassword;
+
+    @Column(name = "login_count")
+    private Integer loginCount;
+
+    @Column(name = " otpExpiry")
+    private LocalDateTime  otpExpiry;
+
+    @Column(name = "otp")
+    private String otp;
+
+
 }
