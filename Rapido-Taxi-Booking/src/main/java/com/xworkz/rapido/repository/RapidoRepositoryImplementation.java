@@ -56,13 +56,13 @@ public class RapidoRepositoryImplementation implements RapidoRepository {
     }
 
     @Override
-    public String getByEmail(String email) {
+    public RapidoEntity  getByEmail(String email) {
         System.out.println("Running in the getByEmail in repository method");
        EntityManager entityManager=null;
-       String check=null;
+        RapidoEntity  check=null;
         try{
             entityManager=entityManagerFactory.createEntityManager();
-            check= (String) entityManager.createNamedQuery("getByEmail").setParameter("email",email).getSingleResult();
+            check= (RapidoEntity) entityManager.createNamedQuery("getByEmail").setParameter("email",email).getSingleResult();
 
             return check;
         }
@@ -103,6 +103,8 @@ public class RapidoRepositoryImplementation implements RapidoRepository {
         }
         return no;
     }
+
+
 
     public void closeResource(){
         if(entityManagerFactory!=null&&entityManagerFactory.isOpen())
