@@ -42,10 +42,10 @@ document.getElementById("PhNoerror").innerHTML="";
 }
 }
 
-function loginName()
-{
-const Name=
-const Name=
-}
+//function loginName()
+//{
+//const Name=
+//const Name=
+//}
 
 
