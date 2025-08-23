@@ -5,7 +5,8 @@ import com.xworkz.rapido.entity.RapidoEntity;
 
 public interface RapidoService {
     Boolean save(RapidoDto rapidoDto);
-    String getByEmail(String email);
+    RapidoDto getByEmail(String email);
     Long getByPhoneNumber(Long num);
+    Boolean verifyOtp(String email,String otp);
 
 }
