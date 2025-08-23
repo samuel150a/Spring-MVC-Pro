@@ -2,6 +2,7 @@ package com.xworkz.rapido.controller;
 
 import com.xworkz.rapido.dto.RapidoDto;
 import com.xworkz.rapido.service.RapidoService;
+import com.xworkz.rapido.service.RapidoServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class RapidoController {
     @Autowired RapidoService rapidoService;
+    @Autowired
+    RapidoServiceImplementation rapidoServiceImplementation;
 
     public RapidoController() {
         System.out.println("Running in the RapidoController controller ");
@@ -40,7 +43,7 @@ public class RapidoController {
         {
             System.out.println("SavedSuccessfully");
             model.addAttribute("message","***************SavedSuccessfully***************");
-            return "RegisterSuccess";
+            return "VerifyOtp";
         }
         else {
             System.out.println("Failed To save");
@@ -49,11 +52,27 @@ public class RapidoController {
         }
     }
     @PostMapping("log")
-    public String handleLogin(RapidoDto rapidoDto, Model model)
-    {
+    public String handleLogin(RapidoDto rapidoDto, Model model) {
         System.out.println("Running in the handleLogin method ");
-        model.addAttribute("message","LoginSuccessfull");
+        model.addAttribute("message", "LoginSuccessfull");
 
         return "LoginSuccessfull";
     }
+        @PostMapping("verify")
+                public String verifyOtp(String email, String otp, Model model)
+        {
+            System.out.println("Running in the verifyOtp method ");
+            boolean isValid=rapidoService.verifyOtp(email,otp);
+           if(isValid)
+           {
+               model.addAttribute("message", "OTP Verified Successfully!");
+               return "SetPassword";
+           }
+           else{
+               model.addAttribute("message", "Invalid or Expired OTP. Please try again.");
+               return "VerifyOtp";
+           }
+        }
+
+
 }
