@@ -1,5 +1,6 @@
 package com.xworkz.rapido.restcontroller;
 
+import com.xworkz.rapido.dto.RapidoDto;
 import com.xworkz.rapido.service.RapidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class RapidoRestController {
     @GetMapping("checkEmail")
     public String mailValidation(@RequestParam("email") String email) {
         System.out.println("Running in the mailValidation in restController");
-        String exsisting = rapidoService.getByEmail(email);
+        RapidoDto exsisting = rapidoService.getByEmail(email);
         if (exsisting == null) {
             return "Email is not existing";
         } else {
