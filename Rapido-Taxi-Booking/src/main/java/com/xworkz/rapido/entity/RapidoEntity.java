@@ -10,7 +10,10 @@ import java.time.LocalDateTime;
 @Table(name="rapidoDetails3")
 @NamedQueries({
         @NamedQuery(name="getByEmail", query="SELECT a.email FROM RapidoEntity a WHERE a.email=:email"),
-        @NamedQuery(name="getByPhoneNumber", query="SELECT p.phoneNumber FROM RapidoEntity p WHERE p.phoneNumber=:phoneNumber")
+        @NamedQuery(name="getByPhoneNumber", query="SELECT p.phoneNumber FROM RapidoEntity p WHERE p.phoneNumber=:phoneNumber"),
+        @NamedQuery(name="myEmail", query="SELECT a FROM RapidoEntity a WHERE a.email=:email"),
+        @NamedQuery(name = "findByEmail", query = "SELECT r FROM RapidoEntity r WHERE r.email = :email")
+
 })
 @Data
 public class RapidoEntity {
