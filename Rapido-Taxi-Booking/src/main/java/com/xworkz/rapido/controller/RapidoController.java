@@ -1,9 +1,11 @@
 package com.xworkz.rapido.controller;
 
 import com.xworkz.rapido.dto.RapidoDto;
+import com.xworkz.rapido.entity.RapidoEntity;
 import com.xworkz.rapido.service.RapidoService;
 import com.xworkz.rapido.service.RapidoServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,12 +55,20 @@ public class RapidoController {
     }
     @PostMapping("log")
     public String handleLogin(RapidoDto rapidoDto, Model model) {
-        System.out.println("Running in the handleLogin method ");
-        model.addAttribute("message", "LoginSuccessfull");
+        System.out.println("Running in the handleLogin method");
 
-        return "LoginSuccessfull";
+        RapidoDto entity = rapidoService.findByEmail(rapidoDto.getEmail());
+
+        if (entity != null && new BCryptPasswordEncoder().matches(rapidoDto.getPassword(), entity.getPassword())) {
+            model.addAttribute("user", entity);
+            return "LoginSuccessfull";
+        } else {
+            model.addAttribute("message", "Invalid email or password");
+            return "Login";
+        }
     }
-        @PostMapping("verify")
+
+    @PostMapping("verify")
                 public String verifyOtp(String email, String otp, Model model)
         {
             System.out.println("Running in the verifyOtp method ");
@@ -72,6 +82,12 @@ public class RapidoController {
                model.addAttribute("message", "Invalid or Expired OTP. Please try again.");
                return "VerifyOtp";
            }
+        }
+        @PostMapping("setPassword")
+    public String setPassword()
+        {
+            System.out.println("Running in the setPassword in postMapping ");
+            return "Login";
         }
 
 
