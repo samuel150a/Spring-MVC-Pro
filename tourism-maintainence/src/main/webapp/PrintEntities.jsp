@@ -30,7 +30,7 @@
             <td>${d.days}</td>
             <td>${d.fee}</td>
             <td>${d.personCount}</td>
-            <td></tf><a href="view/${d.ID}">view</a></td>
+            <td><a href="view/${d.ID}">view</a></td>
 
 
         </tr>
