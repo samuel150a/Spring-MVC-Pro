@@ -6,5 +6,6 @@ public interface RapidoRepository {
     Boolean save(RapidoEntity rapidoEntity);
     RapidoEntity  getByEmail(String email);
     Long getByPhoneNumber(Long num);
-
+    RapidoEntity  myEmail(String email);
+    RapidoEntity findByEmail(String email);
 }
