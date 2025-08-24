@@ -65,7 +65,7 @@ public class RapidoServiceImplementation implements RapidoService{
 
     @Override
     public Boolean verifyOtp(String email, String otp) {
-        RapidoEntity entity=rapidoRepository.getByEmail(email);
+        RapidoEntity entity=rapidoRepository.myEmail(email);
         if(entity==null)
         {
             return false;
@@ -75,6 +75,19 @@ public class RapidoServiceImplementation implements RapidoService{
 return true;
         }
         return false;
+    }
+
+    @Override
+    public RapidoDto findByEmail(String email) {
+        System.out.println("Running in the getByEmail in service method");
+        RapidoEntity rapidoEntity = rapidoRepository.findByEmail(email);
+        if (rapidoEntity == null) {
+            return null;
+        }
+
+        RapidoDto rapidoDto = new RapidoDto();
+        BeanUtils.copyProperties(rapidoEntity,rapidoDto);
+        return  rapidoDto;
     }
 
 
