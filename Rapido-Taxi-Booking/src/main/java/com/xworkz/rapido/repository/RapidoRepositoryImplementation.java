@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.sql.SQLOutput;
+import java.util.List;
 
 @Repository
 public class RapidoRepositoryImplementation implements RapidoRepository {
@@ -102,6 +103,55 @@ public class RapidoRepositoryImplementation implements RapidoRepository {
             }
         }
         return no;
+    }
+
+
+
+    @Override
+    public RapidoEntity  myEmail(String email) {
+        System.out.println("Running in the myEmail in repository method");
+        EntityManager entityManager=null;
+        RapidoEntity  check=null;
+        try{
+            entityManager=entityManagerFactory.createEntityManager();
+            check= (RapidoEntity) entityManager.createNamedQuery("myEmail").setParameter("email",email).getSingleResult();
+
+            return check;
+        }
+        catch(PersistenceException e){
+            System.out.println(e.getMessage());
+        }
+        finally{
+            if(entityManager!=null && entityManager.isOpen())
+            {
+                entityManager.close();
+            }
+        }
+        return check;
+    }
+
+
+    @Override
+    public RapidoEntity findByEmail(String email) {
+        EntityManager em = null;
+        RapidoEntity entity = null;
+        try {
+            em = entityManagerFactory.createEntityManager();
+            List<RapidoEntity> result = em.createNamedQuery("findByEmail", RapidoEntity.class)
+                    .setParameter("email", email)
+                    .getResultList();
+
+            if (!result.isEmpty()) {
+                entity = result.get(0); // first matching user
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+        return entity;
     }
 
 
