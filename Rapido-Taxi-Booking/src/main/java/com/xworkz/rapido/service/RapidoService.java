@@ -8,5 +8,5 @@ public interface RapidoService {
     RapidoDto getByEmail(String email);
     Long getByPhoneNumber(Long num);
     Boolean verifyOtp(String email,String otp);
-
+    RapidoDto findByEmail(String email);
 }
