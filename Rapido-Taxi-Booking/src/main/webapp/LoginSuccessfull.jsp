@@ -2,15 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<a href="login">Login</a>
-<a href="regi">Register</a>
-
 <body>
-<h2>${message}</h2>
-<h1>Welcome, ${user.name}!</h1>
+<h2>Login Successful 🎉</h2>
+
+<h3>Welcome, ${user.name}!</h3>
+
+<c:if test="${not empty user.profilePic}">
+    <img src="<c:url value='/download?profile=${user.profilePic}'/>"
+         alt="Profile Picture" width="150" height="150"/>
+</c:if>
 
 <table border="1" cellpadding="10">
     <tr>
@@ -38,7 +40,5 @@
         <td>${user.address}</td>
     </tr>
 </table>
-
-
 </body>
 </html>
