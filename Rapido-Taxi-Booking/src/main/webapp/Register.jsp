@@ -8,7 +8,7 @@
 <body>
 <h2> Fill Details</h2>
 
-<form action="register" method="post">
+<form action="register" method="post" enctype="multipart/form-data">
     Name:<input type="text" name="name"> <br><br>
 
     <span id="emailerror"></span>
@@ -23,6 +23,10 @@
     Address:<input type="text" name="address"> <br><br>
     Password:<input type="text" name="password"> <br><br>
     ConfirmPassword:<input type="text" name="confirmPassword"> <br><br>
+
+        Profile Picture:
+        <input type="file" name="profilePicture" value="${rapidoDto.profilePicture}"/></td>
+
     <input type="submit" value="Submit"> <br><br>
 </form>
 
