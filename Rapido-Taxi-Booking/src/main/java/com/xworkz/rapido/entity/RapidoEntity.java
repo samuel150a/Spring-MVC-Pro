@@ -59,5 +59,7 @@ public class RapidoEntity {
     @Column(name = "otp")
     private String otp;
 
+    @Column(name = "profilePic")
+    private String profilePic;
 
 }
