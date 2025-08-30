@@ -2,6 +2,7 @@ package com.xworkz.rapido.dto;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
@@ -22,5 +23,7 @@ public class RapidoDto {
     private String address;
     private String password;
     private String confirmPassword;
+    private MultipartFile profilePicture;
+    private String profilePic;
 
 }
