@@ -1,5 +1,6 @@
 package com.xworkz.rapido.configuration;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
@@ -11,6 +12,7 @@ public class EmailConfig {
     {
         System.out.println("Running in the EmailConfig constructor");
     }
+    @Bean
     public JavaMailSenderImpl javaMailSender()
     {
         JavaMailSenderImpl javaMailSender=new JavaMailSenderImpl();
